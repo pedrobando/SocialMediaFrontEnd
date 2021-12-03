@@ -2,21 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
-import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import GatePage from './Components/GatePage/GatePage';
-import { Container, Row, Col, FloatingLabel, Form } from "react-bootstrap/";
+import { Container } from "react-bootstrap/";
 
 ReactDOM.render(
-  <BrowserRouter>
   <React.StrictMode>
-  <Container className="gatePageBackground">
-    <App />
-    </Container>
-    <Routes>
-      <Route path="/" exact component={GatePage} />
-    </Routes>
-  </React.StrictMode>
-  </BrowserRouter>,
+    
+      <App />
+   
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
