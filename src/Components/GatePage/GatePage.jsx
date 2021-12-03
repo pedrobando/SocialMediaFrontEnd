@@ -3,6 +3,19 @@ import { Row, Col, FloatingLabel, Form, Button, Modal } from "react-bootstrap/";
 import "./GatePage.css";
 
 const GatePage = (props) => {
+    const user = props.user;
+    const handleSubmit = (event) => {
+        
+        const userData = {
+          email: event.target[0].value,
+          password: event.target[1].value,
+        };
+      
+        props.login(userData);
+        event.preventDefault();
+
+      };
+     
   return (
     <Row className="center">
       <Col md={6} xs={12}>
@@ -20,18 +33,20 @@ const GatePage = (props) => {
         <>
           <Modal.Dialog>
             <Modal.Body className="mt-5">
-              <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+            <Form onSubmit={handleSubmit}>
+              <FloatingLabel controlId="email" label="Email" className="mb-3">
                 <Form.Control type="email" placeholder="name@example.com" />
               </FloatingLabel>
-              <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
+              <FloatingLabel controlId="password" label="Password" className="mb-3">
                 <Form.Control type="password" placeholder="Password" />
               </FloatingLabel>
 
               <div className="d-grid gap-2">
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="lg" type="submit">
                   Log In
                 </Button>
               </div>
+              </Form>
             </Modal.Body>
             <Modal.Footer className="d-grid gap-2 mb-5">
                 <p>Not a ChristmasStories user? Register</p>
