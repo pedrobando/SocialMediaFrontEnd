@@ -38,7 +38,7 @@ const GatePage = (props) => {
                 <Form.Control type="email" placeholder="name@example.com" />
               </FloatingLabel>
               <FloatingLabel controlId="password" label="Password" className="mb-3">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="string" placeholder="Password" />
               </FloatingLabel>
 
               <div className="d-grid gap-2">

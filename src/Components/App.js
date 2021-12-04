@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Wall from "./Wall/Wall";
-import registrationPage from "./RegistrationPage/RegistrationPage";
+import RegistrationPage from "./RegistrationPage/RegistrationPage";
 // import { useNavigate } from "react-router";
 
 const App = (props) => {
@@ -48,15 +48,15 @@ const App = (props) => {
           {!user && 
           <Route
             path="/"
-            element={<GatePage login={login} user={user} setUser={setUser} />}
+            element={<><GatePage login={login} user={user} setUser={setUser} /><RegistrationPage register={register} user={user} setUser={setUser} /></>}
           />
           }
-          {!user && 
+          {/* {!user && 
           <Route
             path="/"
             element={<RegistrationPage login={register} user={user} setUser={setUser} />}
           />
-          }
+          } */}
           <Route path="/wall" exact element={Wall} />
         </Routes>
       </Container>

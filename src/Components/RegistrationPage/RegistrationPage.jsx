@@ -2,20 +2,22 @@ import React from "react";
 import { Row, Col, FloatingLabel, Form, Button, Modal } from "react-bootstrap/";
 import "./RegistrationPage.css";
 
-const registrationPage = (props) => {
-    const user = props.user;
-    const handleSubmit = (event) => {
-        
+const RegistrationPage = (props) => {
+  const user = props.user;
+  const handleSubmit = (event) => {
+    debugger
+    console.log(event);
+    event.preventDefault();
         const userData = {
           firstName: event.target[0].value,
           lastName: event.target[1].value,
           email: event.target[2].value,
-          userName: event.target[3].value,
+          christmasPreference: event.target[3].value,
           password: event.target[4].value,
+          dob: event.target[5].value,
         };
       
         props.register(userData);
-        event.preventDefault();
 
       };
      
@@ -24,13 +26,13 @@ const registrationPage = (props) => {
       <Col md={6} xs={12}>
         <img
           className="logo"
-          src="/assets/img/logo.png"
+          // src="/assets/img/logo.png"
           alt="Christmas Stories"
         />
-        <p className="text-white">
+        {/* <p className="text-white">
           Join us for the holidays, enjoy playing games, discussing recipes and
           celebrating holiday traditions
-        </p>
+        </p> */}
       </Col>
       <Col md={6} xs={12}>
         <>
@@ -46,11 +48,14 @@ const registrationPage = (props) => {
               <FloatingLabel controlId="email" label="email" className="mb-3">
                 <Form.Control type="email" placeholder="name@email.com" />
               </FloatingLabel>
-              <FloatingLabel controlId="userName" label="userName" className="mb-3">
-                <Form.Control type="string" placeholder="User Name" />
+              <FloatingLabel controlId="christmasPreference" label="christmasPreference" className="mb-3">
+                <Form.Control type="string" placeholder="Christmas Preference" />
               </FloatingLabel>
               <FloatingLabel controlId="password" label="Password" className="mb-3">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="string" placeholder="Password" />
+              </FloatingLabel>
+              <FloatingLabel controlId="dob" label="dob" className="mb-3">
+                <Form.Control type="string" placeholder="Date of Birth" />
               </FloatingLabel>
 
               <div className="d-grid gap-2">
@@ -70,4 +75,4 @@ const registrationPage = (props) => {
   );
 };
 
-export default registrationPage;
+export default RegistrationPage;
