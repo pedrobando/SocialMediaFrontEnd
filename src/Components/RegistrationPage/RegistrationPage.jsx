@@ -55,7 +55,7 @@ const RegistrationPage = (props) => {
                 <Form.Control type="string" placeholder="Password" />
               </FloatingLabel>
               <FloatingLabel controlId="dob" label="dob" className="mb-3">
-                <Form.Control type="string" placeholder="Date of Birth" />
+                <Form.Control type="date" placeholder="Date of Birth" />
               </FloatingLabel>
 
               <div className="d-grid gap-2">
