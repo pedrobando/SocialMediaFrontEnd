@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Wall from "./Wall/Wall";
+import registrationPage from "./RegistrationPage/RegistrationPage";
 // import { useNavigate } from "react-router";
 
 const App = (props) => {
@@ -14,6 +15,16 @@ const App = (props) => {
   const login = async (user) => {
     await axios
       .post(`http://localhost:5050/api/users/login`, user)
+      .then((res) => {
+        localStorage.setItem("token", res.data);
+        const jwt = localStorage.getItem("token");
+        setUser(jwtDecode(jwt));
+
+      });
+  };
+  const register = async (user) => {
+    await axios
+      .post(`http://localhost:5050/api/users/register`, user)
       .then((res) => {
         localStorage.setItem("token", res.data);
         const jwt = localStorage.getItem("token");
@@ -38,7 +49,14 @@ const App = (props) => {
           <Route
             path="/"
             element={<GatePage login={login} user={user} setUser={setUser} />}
-          />}
+          />
+          }
+          {!user && 
+          <Route
+            path="/"
+            element={<RegistrationPage login={register} user={user} setUser={setUser} />}
+          />
+          }
           <Route path="/wall" exact element={Wall} />
         </Routes>
       </Container>
