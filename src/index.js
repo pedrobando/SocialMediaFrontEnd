@@ -5,11 +5,9 @@ import App from './Components/App';
 import { Container } from "react-bootstrap/";
 
 ReactDOM.render(
-  <React.StrictMode>
     
-      <App />
+      <App />,
    
-  </React.StrictMode>,
   document.getElementById('root')
 );
 
