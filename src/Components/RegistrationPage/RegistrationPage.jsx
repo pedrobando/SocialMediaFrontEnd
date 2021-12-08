@@ -60,7 +60,7 @@ const RegistrationPage = (props) => {
 
               <div className="d-grid gap-2">
                 <Button variant="primary" size="lg" type="submit">
-                  Log In
+                 Register
                 </Button>
               </div>
               </Form>

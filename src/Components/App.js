@@ -7,6 +7,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Timeline from "./Timeline/Timeline";
 import RegistrationPage from "./RegistrationPage/RegistrationPage";
+import NavigationBar from "./NavigationBar/NavigationBar";
 // import { useNavigate } from "react-router";
 
 const App = (props) => {
@@ -40,6 +41,7 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
+      <NavigationBar/>
       <Container className="gatePageBackground">
         {/* <MenuNavigation/> */}
         <Routes>
