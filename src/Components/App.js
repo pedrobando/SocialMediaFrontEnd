@@ -41,7 +41,6 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
-      <NavigationBar/>
       <Container className="gatePageBackground">
         {/* <MenuNavigation/> */}
         <Routes>

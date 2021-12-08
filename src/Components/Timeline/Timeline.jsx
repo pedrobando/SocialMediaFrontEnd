@@ -1,21 +1,15 @@
 import React from "react";
-import { Row, Col, Card } from "react-bootstrap/";
+import { Row, Col, Card, Container } from "react-bootstrap/";
 import "./Timeline.css";
+import NavigationBar from "../NavigationBar/NavigationBar";
+import UserProfile from "../UserProfile/UserProfile";
 
-const Timeline = ({user}) => {
+const Timeline = (props) => {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={`http://localhost:5050/${user.image}`}/>
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          firstName:
-          lastName:
-          christmasPreference:
-          aboutMe:
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Container>
+    <NavigationBar/>
+    <UserProfile user={props.user}/>
+    </Container>
   );
 };
 
