@@ -5,7 +5,7 @@ import GatePage from "./GatePage/GatePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import Wall from "./Wall/Wall";
+import Timeline from "./Timeline/Timeline";
 import RegistrationPage from "./RegistrationPage/RegistrationPage";
 // import { useNavigate } from "react-router";
 
@@ -19,7 +19,6 @@ const App = (props) => {
         localStorage.setItem("token", res.data);
         const jwt = localStorage.getItem("token");
         setUser(jwtDecode(jwt));
-
       });
   };
   const register = async (user) => {
@@ -29,7 +28,6 @@ const App = (props) => {
         localStorage.setItem("token", res.data);
         const jwt = localStorage.getItem("token");
         setUser(jwtDecode(jwt));
-
       });
   };
   const jwt = localStorage.getItem("token");
@@ -45,19 +43,43 @@ const App = (props) => {
       <Container className="gatePageBackground">
         {/* <MenuNavigation/> */}
         <Routes>
-          {!user && 
-          <Route
-            path="/"
-            element={<><GatePage login={login} user={user} setUser={setUser} /><RegistrationPage register={register} user={user} setUser={setUser} /></>}
-          />
-          }
-          {/* {!user && 
-          <Route
-            path="/"
-            element={<RegistrationPage login={register} user={user} setUser={setUser} />}
-          />
-          } */}
-          <Route path="/wall" exact element={Wall} />
+          {!user && (
+            <Route
+              path="/"
+              element={
+                <>
+                  <GatePage login={login} user={user} setUser={setUser} />
+                  <RegistrationPage
+                    register={register}
+                    user={user}
+                    setUser={setUser}
+                  />
+                </>
+              }
+            />
+          )}
+          {!user && (
+            <Route
+              path="/"
+              element={
+                <RegistrationPage
+                  login={register}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
+          )}
+          {user && (
+            <Route
+              path="/"
+              element={
+                <Timeline
+                  user={user}
+                />
+              }
+            />
+          )}
         </Routes>
       </Container>
     </BrowserRouter>
