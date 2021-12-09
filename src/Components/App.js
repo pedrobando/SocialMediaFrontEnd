@@ -39,6 +39,11 @@ const App = (props) => {
     // We would only have to figure out how to use the auth with Routes.
   }, []);
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setUser(false);
+}
+
   return (
     <BrowserRouter>
       <Container className="gatePageBackground">
@@ -81,6 +86,15 @@ const App = (props) => {
               }
             />
           )}
+           <Route
+          path="/GatePage"
+          render={() => (
+            <GatePage
+              user={user}
+              handleLogout={handleLogout}
+            />
+          )}
+        />
         </Routes>
       </Container>
     </BrowserRouter>
