@@ -20,11 +20,10 @@ const App = (props) => {
   const [value5, setValue5] = useState(null);
   const [value6, setValue6] = useState(null);
   const [formData, setFormData] = useState(null);
+  const [posts, setPosts] = useState(null);
   // const navigate = useNavigate();
 
-  const logout = async () => {
-    localStorage.removeItem('token')
-  }
+
   const login = async (user) => {
     await axios
       .post(`http://localhost:5050/api/users/login`, user)
@@ -32,9 +31,12 @@ const App = (props) => {
         localStorage.setItem("token", res.data);
         const jwt = localStorage.getItem("token");
         setUser(jwtDecode(jwt));
+        getPosts(user);
+      if(!posts) setPosts(null)
       });
   };
   const register = async (user) => {
+    
     await axios
       .post(`http://localhost:5050/api/users/register`, user)
       .then((res) => {
@@ -43,10 +45,37 @@ const App = (props) => {
         setUser(jwtDecode(jwt));
       });
   };
+
+  const getPosts = async (user) => {
+    await axios
+      .get(`http://localhost:5050/api/users/${user._id}/posts`)
+      .then((res) => setPosts(res));
+  };
+axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
+  const newPost = async (post, user, jwt) => {
+    await axios
+      .post(`http://localhost:5050/api/users/${user.id}/posts`, post)
+      .then((res) => {
+        console.log(res.data)
+        setPosts(res.data)
+      });
+      
+      console.log(jwt);
+      getPosts(user);
+  }
+  const like = async (post, user) => {
+    await axios
+      .patch(`http://localhost:5050/api/users/${user._id}/posts/${post._id}`)
+      .then((res) => {
+        setPosts(res.data)
+      });
+  };
+
   const jwt = localStorage.getItem("token");
   useEffect(() => {
     console.log("Effects is running");
     if (jwt) setUser(jwtDecode(jwt));
+    
     // Authentication is already happening with the jwt token from our back end.
     // We would only have to figure out how to use the auth with Routes.
   }, []);
@@ -84,8 +113,12 @@ const App = (props) => {
               element={
                 <Timeline
                   user={user}
-                  logout={logout}
                   setUser={setUser}
+                  getPosts={getPosts}
+                  posts={posts}
+                  like={like}
+                  newPost={newPost}
+                  jwt={jwt}
                 />
               }
             />

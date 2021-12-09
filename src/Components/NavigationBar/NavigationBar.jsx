@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Button } from "react-bootstrap/";
+import { Navbar, Button, Container } from "react-bootstrap/";
 import "./NavigationBar.css";
 
 const NavigationBar = (props) => {
@@ -10,19 +10,19 @@ const NavigationBar = (props) => {
     //props.setUser(null);
 }
   return (
-    <nav>
-      <ul>
-        <Link to="/">
-          <li>Profile</li>
-        </Link>
-        <Link to="/about">
-          <li>Friends List</li>
-        </Link>
-        <Link to="/" >
-          <li><a onClick={handleLogout}>Logout</a></li>
-        </Link>
-      </ul>
-    </nav>
+    
+
+<Navbar bg="dark" expand="lg"  className="mb-3 margin">
+
+  <Navbar.Brand href="#home">Christmas Stories</Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse className="justify-content-end">
+      <Navbar.Text>
+        Signed in as: Mark Otto
+      </Navbar.Text>
+      <Button variant="outline-primary" onClick={handleLogout}>Log out</Button>
+    </Navbar.Collapse>
+</Navbar>
   );
 };
 
