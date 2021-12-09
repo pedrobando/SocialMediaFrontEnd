@@ -8,6 +8,11 @@ const Timeline = (props) => {
   return (
     <Container>
     <NavigationBar/>
+    {/* <Routes>
+      <Route path="/" exact component={UserProfile} />
+      <Route path="/" exact component={FriendsList} />
+      <Route path="/" exact component={Logout} />
+    </Routes> */}
     <UserProfile user={props.user}/>
     </Container>
   );

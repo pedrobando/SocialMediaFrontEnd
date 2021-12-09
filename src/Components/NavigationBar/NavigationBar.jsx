@@ -1,16 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Navbar } from "react-bootstrap/";
 import "./NavigationBar.css";
 
 const NavigationBar = (props) => {
   
   return (
-<nav class="nav">
-  <a class="nav-link active" href="#">HOME</a>
-  <a class="nav-link" href="#">PROFILE</a>
-  <a class="nav-link" href="#"></a>
-  <a class="nav-link disabled" href="#"></a>
-</nav>
+    <nav>
+      <ul>
+        <Link to="/">
+          <li>Profile</li>
+        </Link>
+        <Link to="/about">
+          <li>Friends List</li>
+        </Link>
+        <Link to="/list">
+          <li>Logout</li>
+        </Link>
+      </ul>
+    </nav>
   );
 };
 
