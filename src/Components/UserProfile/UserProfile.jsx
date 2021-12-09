@@ -10,10 +10,10 @@ const UserProfile = (props) => {
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>
-            firstName:
-            lastName:
-            christmasPreference:
-            aboutMe:
+            First Name: {`${props.user.firstName}`}<br/>
+            Last Name: {`${props.user.lastName}`}<br/>
+            Christmas Preference: {`${props.user.christmasPreference}`}<br/>
+            About Me: {`${props.user.aboutMe}`}
           </Card.Text>
         </Card.Body>
       </Card>
