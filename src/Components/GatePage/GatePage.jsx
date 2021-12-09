@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, FloatingLabel, Form, Button, Modal } from "react-bootstrap/";
+import { Container, Row, Col, FloatingLabel, Form, Button, Modal } from "react-bootstrap/";
 import "./GatePage.css";
 
 const GatePage = (props) => {
@@ -17,7 +17,8 @@ const GatePage = (props) => {
       };
      
   return (
-    <Row className="center">
+    <Container className="gatePageBackground">
+      <Row className="center" >
       <Col md={6} xs={12}>
         <img
           className="logo"
@@ -55,6 +56,9 @@ const GatePage = (props) => {
         </>
       </Col>
     </Row>
+
+    </Container>
+    
   );
 };
 

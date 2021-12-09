@@ -21,6 +21,10 @@ const App = (props) => {
   const [value6, setValue6] = useState(null);
   const [formData, setFormData] = useState(null);
   // const navigate = useNavigate();
+
+  const logout = async () => {
+    localStorage.removeItem('token')
+  }
   const login = async (user) => {
     await axios
       .post(`http://localhost:5050/api/users/login`, user)
@@ -47,15 +51,10 @@ const App = (props) => {
     // We would only have to figure out how to use the auth with Routes.
   }, []);
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    setUser(false);
-}
+  
 
   return (
     <BrowserRouter>
-      <Container className="gatePageBackground">
-        {/* <MenuNavigation/> */}
         <Routes>
           {!user && (
             <Route
@@ -63,18 +62,13 @@ const App = (props) => {
               element={
                 <>
                   <GatePage login={login} user={user} setUser={setUser} />
-                  <RegistrationPage
-                    register={register}
-                    user={user}
-                    setUser={setUser}
-                  />
                 </>
               }
             />
           )}
           {!user && (
             <Route
-              path="/"
+              path="/register"
               element={
                 <RegistrationPage
                   login={register}
@@ -90,21 +84,13 @@ const App = (props) => {
               element={
                 <Timeline
                   user={user}
+                  logout={logout}
+                  setUser={setUser}
                 />
               }
             />
           )}
-           <Route
-          path="/GatePage"
-          render={() => (
-            <GatePage
-              user={user}
-              handleLogout={handleLogout}
-            />
-          )}
-        />
         </Routes>
-      </Container>
     </BrowserRouter>
   );
 };
