@@ -12,6 +12,14 @@ import RegistrationPage from "./RegistrationPage/RegistrationPage";
 
 const App = (props) => {
   const [user, setUser] = useState(null);
+  const [value0, setValue0] = useState(null);
+  const [value1, setValue1] = useState(null);
+  const [value2, setValue2] = useState(null);
+  const [value3, setValue3] = useState(null);
+  const [value4, setValue4] = useState(null);
+  const [value5, setValue5] = useState(null);
+  const [value6, setValue6] = useState(null);
+  const [formData, setFormData] = useState(null);
   // const navigate = useNavigate();
   const login = async (user) => {
     await axios
